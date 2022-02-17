@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+html,body{height: 100%; margin : 0px;}
+div{height: 100%;}
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+.div1
+{
+    background-color: white;
+    width : 15%;
+    float: left;
+}
+.hearticon
+{
+    margin : 10px 0 0 10px;
+    width: 70px;
+}
+.heartdiv
+{
+    font-size: 45px;
+    margin-left: 20px;
+}
+.tab1zerodiv
+{
+    height: 120px;
+}
+.tab1icon
+{
+    width: 35px;
+}
+.tab1icon_wish
+{
+    width: 25px;
+    position: relative;
+    left: -6px;
+}
+.tab1div
+{
+    margin-left: 20px;
+    height: 80px;
+    position: relative;
+    top: 30px;
+    color: #AEB2D1;
+}
+.div2
+{
+    background-color: #F5F6F8;
+    border-top-left-radius: 60px;
+    width : 85%;
+    float: left;
+    position: relative;
+    bottom: 10px;
+    left: 5px;
+}
+.div2-1
+{
+    /*ackground-color: tomato;*/
+    width: 800px;
+    height: 600px;
+    position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto;
+}
+.login
+{
+    color: #9BA3DC;
+    position: relative;
+    top: 20px;
+    right: 40px;
+    font-size: 20px;
+    font-family: 'Comfortaa', cursive;
+}
+.hidiv
+{
+    background-color: #A0A7DD;
+    width: 610px;
+    height: 750px;
+    border-radius: 10px;
+    margin-left: 180px;
+    margin-top : 100px;
+    position: relative;
+    bottom: 30px;
+}
+.select3
+{
+    width: 300px;
+    font-size: 40px;
+
+
+}
+.Tdiv1
+{
+    background-color: #ECF0F6;
+    width: 240px;
+    height: 250px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+.Tdiv2{
+    background-color: #ECF0F6;
+    width: 240px;
+    height: 540px;
+    border-radius: 10px;
+    margin-left: 30px;
+    position: relative;
+    bottom: 13px;
+}
+.try1
+{
+
+    margin-bottom: 40px;
+    margin-top: 85px;
+    color: #A2A5BF;
+    font-size: 35px;
+}
+.img_signal
+{
+    position: relative;
+    top: 330px;
+    left: 190px;
+    width: 480px;
+}
+.img_icn
+{
+    width: 90px;
+}
+.tab_div{
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.tab1pos
+{
+    position: relative;
+    top: 65px;
+    left: 75px;
+}
+.tab2pos
+{
+    position: relative;
+    top: 200px;
+    left: 75px;
+}
+.hi{
+    font-size: 30px;
+    color: white;
+}
+.hi2{
+    font-size: 20px;
+    color: white;
+}
+.hi3{
+    font-size: 20px;
+    color: #2C3681;
+}
+.textpos
+{
+    position: relative;
+    bottom: 400px;
+    left: 60px;
+}
+.yejee{
+    color: #2C3681;
+}
+</style>
+<body>
+    <div class="div1">
+        <table width="100%" >
+            <tr>
+                <td align="right">
+
+                    <img src="{{ url_for('static', filename='icons/heart.jpg')}}" class="hearticon">
+                </td>
+                <td> <div class="heartdiv">
+                    SIGNAL
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <div class="tab1zerodiv"></div>
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <img src="{{ url_for('static', filename='icons/home.jpg')}}" class="tab1icon">
+                </td>
+                <td>
+                     <div class="tab1div">
+                    Home
+                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <img src="{{ url_for('static', filename='icons/discover.jpg')}}" class="tab1icon">
+                </td>
+                <td>
+                     <div class="tab1div">
+                    Discover
+                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <img src="{{ url_for('static', filename='icons/home.jpg')}}" class="tab1icon">
+                </td>
+                <td>
+                     <div class="tab1div">
+                    Recommendations
+                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <img src="{{ url_for('static', filename='icons/wish.jpg')}}" class="tab1icon_wish">
+                </td>
+                <td>
+                     <div class="tab1div">
+                    Wishlist
+                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <img src="{{ url_for('static', filename='icons/set.jpg')}}" class="tab1icon">
+                </td>
+                <td>
+                     <div class="tab1div">
+                    Settings
+                     </div>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+    <div class="div2">
+        <table align="right" class="login">
+            <tr>
+               <td width="80px">   <a href="/login" style="text-decoration: none;">Login</a> </td>
+               <td width="80px">  <a href="/sign" style="text-decoration: none;">Sign up </a> </td>
+            </tr>
+        </table>
+        <br>
+
+        <table  width="100%">
+            <tr height="800px">
+                <td>
+                    <div class="hidiv">
+                        <img src="{{ url_for('static', filename='icons/signal.png')}}" class="img_signal">
+                        <div class="textpos">
+
+                        <p class="hi">안녕하세요 <span class="yejee">YEJI</span> 님!</p> <br>
+                        <P class="hi2">"시그널(signal)은?"</P>
+                        <P class="hi3">장애우와 비장애우를 연결시켜주는 하나의 공간입니다.</P>
+                        <P class="hi2">수화와 음성을 사용한 양방향 인터렉션 서비스를<br>
+                            제공하고있습니다.</P>
+                        </div>
+
+
+
+                    </div>
+                </td>
+                 <td>
+                    <table class="select3" >
+                        <tr>
+                            <td colspan="2" >
+                                <div class="try1">Try the SIGNAL's own features.</div>
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td><div class="Tdiv1">
+                                <table class="tab1pos">
+                                    <tr><td>
+                                        <img src="{{ url_for('static', filename='icons/3.png')}}" class="img_icn">
+                                    </td></tr>
+                                    <tr><td align="center">
+                                        <div class="tab_div">Group chat</div>
+                                    </td></tr>
+                                </table>
+                            </div></td>
+                            <td rowspan="2" >
+                                <div class="Tdiv2">
+                                    <table class="tab2pos">
+                                        <tr><td>
+                                               <a href="/manualSelect" style="text-decoration: none;">
+                                                   <img src="{{ url_for('static', filename='icons/1.png')}}" class="img_icn"></a>
+                                        </td></tr>
+                                        <tr><td align="center">
+                                            <div class="tab_div">Manual</div>
+                                        </td></tr>
+                                    </table>
+
+                                </div>
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <div class="Tdiv1">
+                                <table class="tab1pos">
+                                    <tr><td>
+                                        <img src="{{ url_for('static', filename='icons/2.png')}}" class="img_icn">
+                                    </td></tr>
+                                    <tr><td align="center">
+                                        <div class="tab_div">Group chat</div>
+                                    </td></tr>
+                                </table>
+
+
+                            </div>
+                                </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+html,body{height: 100%; margin : 0px;}
+div{height: 100%;}
+.div1
+{
+    background-color: white;
+    width : 15%;
+    float: left;
+}
+.hearticon
+{
+    margin : 10px 0 0 10px;
+    width: 70px;
+}
+.heartdiv
+{
+    font-size: 45px;
+    margin-left: 20px;
+}
+.tab1zerodiv
+{
+    height: 120px;
+}
+.tab1div
+{
+    margin-left: 20px;
+    height: 80px;
+    position: relative;
+    top: 30px;
+    color: #AEB2D1;
+}
+.tab1icon
+{
+    width: 35px;
+}
+.tab1icon_wish
+{
+    width: 25px;
+    position: relative;
+    left: -6px;
+}
+.div2
+{
+    background-color: #F5F6F8;
+    border-top-left-radius: 60px;
+    width : 85%;
+    float: left;
+    position: relative;
+    bottom: 10px;
+    left: 5px;
+}
+.tabpos{
+    position: relative;
+    left: 280px;
+    top: 130px;
+}
+.tabbox{
+    background-color: #9098D8;
+    width: 1100px;
+    height: 230px;
+    border-radius: 10px;
+}
+.imgtrs
+{
+    position: relative;
+    left: 690px;
+    width: 530px;
+    bottom: 70px;
+}
+.fontselect
+{
+    font-size: 35px;
+    color: #A2A5BF;
+}
+.tabbox2{
+    background-color: #BCCCEC;
+    width: 250px;
+    height: 200px;
+    margin-right: 30px;
+    border-radius: 50px;
+
+}
+.tab1pos
+{
+    position: relative;
+    top: 10px;
+    left: 63px;
+}
+.tab1pos2
+{
+    position: relative;
+    top: 27px;
+    left: 73px;
+}
+.img_icn
+{
+    width: 120px;
+}
+.img_icn2
+{
+    width: 100px;
+}
+.tab_div{
+
+
+font-size: 30px;
+position: relative;
+bottom: 5px;
+}
+.tab_div2{
+
+
+font-size: 30px;
+position: relative;
+bottom: 3px;
+
+}
+.hi1{
+    position: relative;
+    top: -390px;
+    left: 60px;
+    font-size: 30px;
+    color: white
+}
+.hi2{
+    position: relative;
+    top: -390px;
+    left: 60px;
+    font-size: 20px;
+    color: white
+}
+.login
+{
+    color: #9BA3DC;
+    position: relative;
+    top: 20px;
+    right: 40px;
+    font-size: 20px;
+    font-family: 'Comfortaa', cursive;
+}
+.yejee{
+    color: #2C3681;
+}
+</style>
+<body>
+    <div class="div1">
+        <table width="100%" >
+            <tr>
+                <td align="right">
+                   <a href="/main"> <img src="{{ url_for('static', filename='icons/heart.jpg')}}" class="hearticon"></a>
+                </td>
+                <td> <div class="heartdiv">
+                    SIGNAL
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <div class="tab1zerodiv"></div>
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <img src="{{ url_for('static', filename='icons/home.jpg')}}" class="tab1icon">
+                </td>
+                <td>
+                     <div class="tab1div">
+                    Home
+                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <img src="{{ url_for('static', filename='icons/discover.jpg')}}" class="tab1icon">
+                </td>
+                <td>
+                     <div class="tab1div">
+                    Discover
+                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <img src="{{ url_for('static', filename='icons/home.jpg')}}" class="tab1icon">
+                </td>
+                <td>
+                     <div class="tab1div">
+                    Recommendations
+                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <img src="{{ url_for('static', filename='icons/wish.jpg')}}" class="tab1icon_wish">
+                </td>
+                <td>
+                     <div class="tab1div">
+                    Wishlist
+                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <img src="{{ url_for('static', filename='icons/set.jpg')}}" class="tab1icon">
+                </td>
+                <td>
+                     <div class="tab1div">
+                    Settings
+                     </div>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+    <div class="div2">
+
+        <table align="right" class="login">
+            <tr>
+                 <td width="80px">   <a href="/login" style="text-decoration: none;">Login</a> </td>
+               <td width="80px">  <a href="/sign" style="text-decoration: none;">Sign up </a> </td>
+            </tr>
+
+        </table>
+        <table width="600px" class="tabpos">
+
+            <tr>
+                <td>
+                    <p class="fontselect">Selected Menual</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="tabbox">
+
+                        <img src="{{ url_for('static', filename='icons/TRANSLATE.png')}}" class="imgtrs">
+                        <P class="hi1">안녕하세요 <span class="yejee">YEJI</span> 님! </P>
+                        <P class="hi2">해당하는 공공장소를 선택 후 </P>
+                        <P class="hi2">지금바로 메뉴얼 기능을 사용해 보세요 </P>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <br> <br> <br> <br> <br><br>
+        <table width="1100px" class="tabpos">
+            <tr>
+                <td>
+                    <div class="tabbox2">
+                        <table class="tab1pos">
+                            <tr><td>
+                                <a href="/hospital" style="text-decoration: none;">
+                                    <img src="{{ url_for('static', filename='icons/hospital.png')}}" class="img_icn">
+                            </td></tr>
+                            <tr><td align="center">
+                                <div class="tab_div">Hospital</div></a>
+                            </td></tr>
+                        </table>
+                    </div>
+
+                </td>
+                <td>
+
+                    <div class="tabbox2">
+                        <table class="tab1pos2">
+                            <tr><td>
+                                <img src="{{ url_for('static', filename='icons/air.png')}}" class="img_icn2">
+                            </td></tr>
+                            <tr><td align="center">
+                                <div class="tab_div2">Airport</div>
+                            </td></tr>
+                        </table>
+                    </div>
+                </td>
+                <td>
+                    <div class="tabbox2">
+                        <table class="tab1pos2">
+                            <tr><td>
+                                <img src="{{ url_for('static', filename='icons/bank.png')}}" class="img_icn2">
+                            </td></tr>
+                            <tr><td align="center">
+                                <div class="tab_div2">Bank</div>
+                            </td></tr>
+                        </table>
+                    </div>
+
+                </td>
+                <td>
+                    <div class="tabbox2">
+                        <table class="tab1pos2">
+                            <tr><td>
+                                <img src="{{ url_for('static', filename='icons/polic.png')}}" class="img_icn2">
+                            </td></tr>
+                            <tr><td align="center">
+                                <div class="tab_div2">Police</div>
+                            </td></tr>
+                        </table>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

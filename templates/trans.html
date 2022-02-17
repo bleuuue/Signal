@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>trans</title>
+    <style>
+        html,body{
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .main{
+            margin: 10px 0 10px 10px;
+            height: 910px;
+            overflow: hidden;
+
+        }
+        .main .video{
+            float: left;
+            width: 49%;
+            height: 100%;
+        }
+        .main .content{
+            float: left;
+            width: 50%;
+            height: 88%;
+        }
+        .main .content .chat
+        {
+            height: 100%;;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            overflow:auto;
+        }
+        .main .content .sendmsg{
+            height: 100%;
+            margin-left: 10px;
+        }
+        .circle {
+            width : 70px;
+            height : 70px;
+            border-radius: 50px;
+            float:left;
+            margin-left : 60px;
+        }
+        .stt{
+            background-color : #6D95DA;
+        }
+        .trans{
+            background-color : #6DC360;
+        }
+        .end{
+            background-color : #EF666D;
+        }
+        .button{
+            left: 25%;
+            position: relative;
+            top: -150px;
+        }
+        .p1{
+            width : 40px;
+            height : 40px;
+            padding-top : 15px;
+            padding-left : 15px;
+        }
+        .p2{
+            width : 40px;
+            height : 40px;
+            padding-top : 15px;
+            padding-left : 19px;
+        }
+        .p3{
+             z-index: 5;
+             margin : 0px;
+             width : 25px;
+             height : 25px;
+             position : relative;
+             left : 46%;
+             top : -48px;
+        }
+        .p4{
+            width : 40px;
+            height : 40px;
+            padding-top : 15px;
+            padding-left : 15px;
+        }
+        .content .sendmsg .textarea
+        {
+            background-color: #F4F7FB;
+            width: calc(100% - 10px);
+            height: 60px;
+            border-radius: 15px 15px 15px 15px;
+            border-style :none;
+            font-size: 30px;
+            font-weight: bold;
+            outline:none;
+            resize: none;
+            font-family: 맑은 고딕;
+        }
+        .content .sendmsg .send_button
+        {
+            float: right;
+            background-color: #365DE6;
+            width: 100px;
+            height: 64px;
+            border-radius: 15px 15px 15px 15px;
+            margin-right : 20px;
+            padding: 0px 0px 0px 0px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            top: -15px;
+        }
+        .content .sendmsg .send_button .send
+        {
+            padding-top :15px;
+            z-index : 10;
+        }
+        td{
+            text-align : center;
+        }
+        .chat .question{
+           float: left;
+           position: relative;
+           min-height: 24px;
+           left: 2px;
+           background-color: #365DE6;
+           border-radius: 15px;
+           padding : 15px 100px;
+           word-break: break-all;
+           text-align:center;
+           color : white;
+           margin : 5px;
+        }
+        .chat .answer{
+           float: right;
+           position: relative;
+           min-height: 24px;
+           max-width: calc(100% - 64px);
+           background-color: white;
+           border-radius: 15px;
+           padding : 15px 120px;
+           word-break: break-all;
+           text-align:center;
+           color : gray;
+           border : 1px solid #365DE6;
+        }
+        .chat .yes{
+           display : inline;
+           float: right;
+           position: relative;
+           min-height: 24px;
+           max-width: calc(100% - 32px);
+           background-color: white;
+           border-radius: 15px;
+           padding : 15px 65px;
+           word-break: break-all;
+           text-align:center;
+           color : gray;
+           border : 1px solid #365DE6;
+           margin-right: 10px;
+        }
+        .chat .yes:hover{
+           background-color: #365DE6;
+           color : white;
+        }
+
+        .chat .no{
+           display : inline;
+           float: right;
+           position: relative;
+           min-height: 24px;
+           max-width: calc(100% - 32px);
+           background-color: white;
+           border-radius: 15px;
+           padding : 15px 50px;
+           word-break: break-all;
+           text-align:center;
+           color : gray;
+           border : 1px solid #365DE6;
+        }
+        .chat .no:hover{
+            background-color: #365DE6;
+            color : white;
+        }
+
+        .chat .blank{
+            clear : both;
+            height : 4px;
+        }
+
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript">
+    var bClick, i, not, pre, next, isSend, sClick, pre, next, isReady, isDelete;
+
+    var questions = ['성함이 무엇입니까?', '나이가 어떻게 되십니까?', '최근 2주내 해외 방문 기록이 있으십니까?',
+    '확진자와 접촉한 동선이 있습니까?', '',
+    '현재 증상이 있으신가요?', '그외에 기존에 질병을 가지고 계산가요?', '현재 복용하고 있는 약이 있습니까?']
+
+    var voice = new SpeechSynthesisUtterance();
+    voice.lang = 'ko-KR';
+
+    bClick = 0;
+    sClick = 0;
+    pre = 0;
+    i = 0;
+    isSend = 0;
+    isReady = 0;
+    isDelete = 0;
+
+
+    $(document).ready(function(){
+           setInterval("ajaxd()",1000); // call every 1 seconds
+    });
+
+    function ajaxd()  {
+        // reload result into element with id "resultReceived"
+
+        if(isReady == 0){
+            //첫 질문
+            var node = document.createElement("div");
+            var blank = document.createElement("div");
+
+            node.className="question";
+            blank.className="blank";
+
+            node.innerHTML = questions[0];
+            document.getElementById("contents").appendChild(node);
+            document.getElementById("contents").appendChild(blank);
+            isReady = 1;
+        }
+
+        if(isDelete == 1){
+            isDelete = 0
+            $("#d").load("/delM");
+        }
+
+        if(pre != bClick){
+            pre = bClick
+            $("#n").load("/click");
+        }
+
+        if(bClick == 1){
+            $("#msg").load("/sendData");
+        }
+
+        if(bClick == 0){
+            if(isSend == 1){
+                isSend = 0;
+                $("#msg").load("/sendResult");
+            }
+        }
+
+        if(sClick == 1){
+            sttContent();
+        }
+    }
+
+    function changeQ() {
+        if(bClick==1){
+            $(".p4").attr("src","/static/icons/fist.png");
+            $('#n').css('background-color','#6DC360');
+            bClick=0;
+            isSend = 1;
+        }else if(bClick==0) {
+            $(".p4").attr("src","/static/icons/palm.png");
+            $('#n').css('background-color','#58606B');
+            bClick=1;
+        }
+    }
+
+    function send_msg() {
+        var node1= document.createElement("div");
+        var blank = document.createElement("div");
+
+        node1.className="answer";
+        blank.className="blank";
+
+        document.getElementById("contents").appendChild(node1);
+        document.getElementById("contents").appendChild(blank);
+
+        var childrens = $("#contents").children(".answer").last()
+        childrens.text($("textarea#msg").val());
+
+        $("#msg").empty();
+
+        //TTS 코드
+        setLang('ko-KR');
+
+        voice.rate = 0.7; // 0.1 ~ 10
+        voice.pitch = 1.5; // 0 ~ 2
+
+        var name = childrens;
+        voice.text = name.text();
+        speechSynthesis.speak(voice);
+
+        if(i == 0 || i == 2 || i == 4 || i == 5 || i == 8 || i == 3){
+
+            i++;
+
+            var node = document.createElement("div");
+            var blank = document.createElement("div");
+
+            node.className="question";
+            blank.className="blank";
+
+            node.innerHTML = questions[i];
+            document.getElementById("contents").appendChild(node);
+            document.getElementById("contents").appendChild(blank);
+        }else if(i == 1 || i == 6 || i == 7){
+
+            i++;
+
+            var node = document.createElement("div");
+            var blank = document.createElement("div");
+
+            node.className="question";
+            blank.className="blank";
+
+            node.innerHTML = questions[i];
+            document.getElementById("contents").appendChild(node);
+            document.getElementById("contents").appendChild(blank);
+
+            var yes = document.createElement("div");
+            var no =  document.createElement("div");
+            var blank = document.createElement("div");
+
+            yes.className="yes";
+            no.className="no";
+            blank.className="blank";
+
+            yes.innerHTML = "예";
+            no.innerHTML = "아니오";
+
+            document.getElementById("contents").appendChild(no);
+            document.getElementById("contents").appendChild(yes);
+            document.getElementById("contents").appendChild(blank);
+
+            $(".yes").click(function(){
+
+                var yes_div = $("#contents").children(".yes").last()
+
+                //TTS 코드
+                setLang('ko-KR');
+
+                voice.rate = 0.7; // 0.1 ~ 10
+                voice.pitch = 1.5; // 0 ~ 2
+
+                var name = yes_div;
+                voice.text = name.text();
+                speechSynthesis.speak(voice);
+
+                i ++;
+
+                var node = document.createElement("div");
+                var blank = document.createElement("div");
+
+                node.className="question";
+                blank.className="blank";
+
+                node.innerHTML = questions[i];
+                document.getElementById("contents").appendChild(node);
+                document.getElementById("contents").appendChild(blank);
+            });
+
+            $(".no").click(function(){
+
+                var no_div = $("#contents").children(".no").last()
+
+                //TTS 코드
+                setLang('ko-KR');
+
+                voice.rate = 0.7; // 0.1 ~ 10
+                voice.pitch = 1.5; // 0 ~ 2
+
+                var name = no_div;
+                voice.text = name.text();
+                speechSynthesis.speak(voice);
+
+                i ++;
+
+                var node = document.createElement("div");
+                var blank = document.createElement("div");
+
+                node.className="question";
+                blank.className="blank";
+
+                node.innerHTML = questions[i];
+                document.getElementById("contents").appendChild(node);
+                document.getElementById("contents").appendChild(blank);
+            });
+
+
+        }
+
+
+    }
+
+    function setLang(langTxt){
+            voice.lang = langTxt;
+     }
+
+
+    //stt
+
+    var SpeechRecognition = window.webkitSpeechRecognition;
+    var recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.lang="ko-KR";
+
+    var Content;
+
+    function sttContent(){
+        var Textbox = $("#contents").children(".question").last();
+
+        //Content 띄우는 걸
+        Textbox.text(Content);
+
+    }
+
+    $(document).ready(function() {
+        $('#stt_start').on('click', function(e) {
+            if(sClick == 0)
+            {
+                // 파란색 비움
+                var Textbox = $("#contents").children(".question").last();
+                $('#stt_start').css('background-color','#58606B');
+                Textbox.text('');
+                i = i-1;
+                Content = '';
+                sClick = 1;
+            }
+
+            else if(sClick == 1)
+            {
+                recognition.stop();
+                $('#stt_start').css('background-color','#6D95DA');
+                sClick = 0;
+            }
+
+            if(Content.length) {
+                Content += ' ';
+            }
+            recognition.start();
+        });
+    });
+
+     recognition.onresult = function(event) {
+        var current = event.resultIndex;
+        var transcript = event.results[current][0].transcript;
+        Content += transcript;
+    };
+
+
+
+    function delM (){
+        isDelete = 1;
+        $("#msg").empty();
+    }
+    </script>
+
+</head>
+<body>
+    <div class="ex-layout">
+        <div class="main">
+            <div class="video">
+                <img style="width:100%; height:100%;" id="video" src="{{ url_for('video_feed') }}">
+                <div class="button">
+                    <div id="stt_start" class="stt circle">
+                        <img src="/static/img/mic.png" class="p1" alt="STT - 음성 텍스트화">
+                    </div>
+                    <div id="n" class="trans circle" name="transB" onclick="changeQ()">
+                        <img class="p4" src="/static/icons/fist.png">
+                    </div>
+                    <div class="end circle">
+                        <img src="/static/img/exit.png" class="p2" alt="종료">
+                    </div>
+                </div> <!--button end -->
+            </div> <!--video end -->
+
+
+
+            <div class="content">
+                <div class="chat" id="contents">
+                </div> <!--chat end -->
+
+                <div class="sendmsg">
+                    <table>
+                        <tr>
+                            <td width="150%" height="100px">
+                                <textarea class="textarea" id="msg" ></textarea>
+                                <img class="p3" src = "/static/img/delete.png" alt = "삭제" onclick="delM()">
+                            </td>
+                            <td>
+                                <div class="send_button" onclick="send_msg()" >
+                                    <img src="/static/img/send.png" class="send" alt="전송">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                   <div id = "d"></div>
+                </div> <!--sendmsg end -->
+            </div> <!--content end -->
+        </div>
+    </div>
+
+</body>
+</html>

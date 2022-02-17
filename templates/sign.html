@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@500&family=Signika+Negative:wght@700&display=swap');
+body{
+    background-color: #F4F6FC;
+}
+.div1{
+    width: 1600px;
+    height: 770px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin:auto;
+    box-shadow: 1px 1px 1px 1px gainsboro;
+}
+.div1_tab1{
+    background-color: #F9FAFF;
+    height: 770px;
+    width: 800px;
+}
+.div1_tab1_img
+{
+    position: relative;
+    top: 130px;
+    left: 120px;
+    width: 530px;
+}
+.div1_tab2{
+    position: relative;
+    background-color: white;
+    height: 770px;
+    width: 800px;
+}
+.div1_tab2_align{
+    position: relative;
+    top: 90px;
+    left: 200px;
+}
+.login_p
+{
+    font-size: 28px;
+    font-family: 'Hind Vadodara', sans-serif;
+    color: #303A4F;
+}
+.div_info
+{
+    font-size: 22px;
+    color: #414B5E;
+    width: 200px;
+    border-bottom: solid 2px #5F81FF;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+.div_id{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.input_size
+{
+    width: 400px;
+    height: 35px;
+    background-color: #F9FAFF;
+    border: solid 2px #EDF2FF;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.login_size
+{
+    width: 400px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: #2E5BFF;
+    color: white;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.tab_last
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: gray;
+}
+.signal{
+    position: relative;
+    font-size: 30px;
+    top: -510px;
+    left: 70px;
+    font-family: 'Signika Negative', sans-serif;
+}
+.img_clo
+{
+    width: 22px;
+    position: relative;
+    left: 700px;
+    top: 40px;
+}
+</style>
+<body>
+    <div class="div1">
+        <table width="100%">
+            <tr>
+                <td>
+                    <div class="div1_tab1">
+                        <img src="{{ url_for('static', filename='icons/sign.png')}}" class="div1_tab1_img">
+                        <p class="signal">SIGNAL</p>
+                    </div>
+                </td>
+                <td>
+                    <div class="div1_tab2">
+                        <a href="/main"> <img src="{{ url_for('static', filename='icons/close.jpg')}}" class="img_clo"></a>
+                    <form>
+                       <table width="400px"  class="div1_tab2_align">
+                           <tr>
+                            <td><p class="login_p">Sing up</p></td>
+                            </tr>
+                           <tr><td><div class="div_info">Personal Info</div></td></tr>
+                           <tr><td>
+                               <div class="div_id">ID</div></td></tr>
+                           <tr>
+                               <td>
+                                   <input type="text" class="input_size">
+                                </td>
+                            </tr>
+                           <tr><td><div class="div_id">Password</div></td></tr>
+                           <tr><td><input type="password" class="input_size"></td></tr>
+                           <tr><td>
+                            <div class="div_id">Email</div></td></tr>
+                        <tr>
+                            <td>
+                                <input type="text" class="input_size">
+                             </td>
+                         </tr>
+                           <tr><td><input type="submit" value="JOIN" class="login_size"></td></tr>
+                           <tr align="center"><td><div class="tab_last">Already have An Account? Sign In</div></td></tr>
+                       </table>
+                    </form>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
