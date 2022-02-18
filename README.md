@@ -60,8 +60,8 @@
 : 인식된 자음, 모음 단어 조합 및 문장 제작
 
 ## **[ Feature Implementation ]**
-<img src="https://user-images.githubusercontent.com/79898245/154719527-417de104-6a5e-4dc7-8a82-54fcaac1bbb5.png" width="550" align="right">
-<img src="https://user-images.githubusercontent.com/79898245/154721691-8c6755f6-dfaf-4c13-a17c-2b10ec70b13e.png" width="400">
+<img src="https://user-images.githubusercontent.com/79898245/154719527-417de104-6a5e-4dc7-8a82-54fcaac1bbb5.png" width="450" align="right">
+<img src="https://user-images.githubusercontent.com/79898245/154721691-8c6755f6-dfaf-4c13-a17c-2b10ec70b13e.png" width="350">
 
 <br>
 
