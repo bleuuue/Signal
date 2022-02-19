@@ -265,3 +265,6 @@ def video_feed():
 
     return Response(myCamera(camera), mimetype='multipart/x-mixed-replace; boundary=mycam')
 ```
+
+## **[ Youtube ]**
+https://youtu.be/1MKZ8jkfqYs
